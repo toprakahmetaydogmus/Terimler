@@ -27,6 +27,7 @@ Proje tek bir HTML dosyasından oluştuğu için kurulum gerektirmez:
 1. Bu depoyu klonlayın veya `index.html` dosyasını indirin.
 2. Dosyayı herhangi bir modern tarayıcıda (Chrome, Firefox, Safari, Edge) açın.
 3. Arkanıza yaslanın ve siber dünyayı keşfedin!
+4. veya siberterimleri.vercel.app adresinden ulaşabilirsiniz.
 
 ## 🤝 Katkıda Bulunma
 
