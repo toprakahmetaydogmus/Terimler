@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siber Akademi -Toprak Ahmet Aydoğmuş - Kapsamlı Terimler Sözlüğü</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Saf CSS ile Lüks ve Modern Tasarım (Tailwind Bağımsız) */
+        :root {
+            --dark: #0a0a0a;
+            --card-bg: rgba(20, 20, 20, 0.7);
+            --gold: #d4af37;
+            --gold-light: #ffdf00;
+            --neon: #00e5ff;
+            --text-main: #f5f5f5;
+            --text-muted: #a3a3a3;
+            --border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Arka Plan Işık Efektleri */
+        .bg-glow-1 {
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 400px;
+            background: rgba(212, 175, 55, 0.05);
+            filter: blur(150px);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .bg-glow-2 {
+            position: fixed;
+            bottom: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            background: rgba(0, 229, 255, 0.03);
+            filter: blur(150px);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .badge {
+            color: var(--gold);
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, #fff8dc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.125rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Arama Çubuğu */
+        .search-container {
+            max-width: 700px;
+            margin: 0 auto 4rem auto;
+            position: relative;
+        }
+
+        .search-icon {
+            position: absolute;
+            top: 50%;
+            left: 1.5rem;
+            transform: translateY(-50%);
+            color: #666;
+            font-size: 1.25rem;
+            transition: color 0.3s ease;
+        }
+
+        .search-input {
+            width: 100%;
+            background: #111;
+            border: 1px solid #333;
+            color: white;
+            border-radius: 2rem;
+            padding: 1.25rem 1.5rem 1.25rem 3.5rem;
+            font-size: 1.125rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.15);
+        }
+
+        .search-input:focus+.search-icon {
+            color: var(--gold);
+        }
+
+        /* Grid Sistemi */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Cam Efektli Kartlar */
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow: 0 15px 35px -10px rgba(212, 175, 55, 0.15);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(0, 229, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--neon);
+        }
+
+        .card-tech {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            flex-grow: 1;
+        }
+
+        .card-tech strong {
+            color: #e5e5e5;
+        }
+
+        .card-meta {
+            font-size: 0.9rem;
+            color: #d4d4d4;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 1rem;
+            border-radius: 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .card-meta strong {
+            color: var(--gold);
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .card-meta i {
+            margin-right: 0.5rem;
+        }
+
+        /* Sayaç */
+        .counter {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--gold);
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bg-glow-1"></div>
+    <div class="bg-glow-2"></div>
+
+    <div class="container">
+        <div class="header">
+            <span class="badge">Siber Akademi Sözlüğü</span>
+            <h1 class="title">Siber Güvenlik Terimleri</h1>
+            <p class="subtitle">Teknik terimlerin arkasına saklanmıyoruz. 100 temel kavram, sıfırdan başlayanlar için
+                günlük hayat örnekleriyle yeniden yorumlandı.</p>
+        </div>
+
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-input"
+                placeholder="Bir terim arayın (Örn: Phishing, VPN, Firewall)...">
+            <i class="fas fa-search search-icon"></i>
+        </div>
+
+        <div class="counter" id="resultCount">100 terim gösteriliyor</div>
+
+        <div class="grid" id="termsContainer">
+        </div>
+    </div>
+
+    <script>
+        const termDatabase = [
+            { t: "CIA Üçgeni", k: "Gizlilik, Bütünlük ve Erişilebilirlik prensipleri bütünü.", m: "Bir kargo paketi: İçinin görünmemesi (Gizlilik), yolda değiştirilmemesi (Bütünlük) ve kargocunun paketi eve getirmesi (Erişilebilirlik).", i: "fa-shield-alt" },
+            { t: "Firewall (Güvenlik Duvarı)", k: "Ağ trafiğini belirli güvenlik kurallarına göre filtreleyen sistem.", m: "Lüks bir mekanın kapısındaki fedai. Sadece davetiyesinde ismi olanları içeri alır, kavgacı tipleri kapıdan sokmaz.", i: "fa-brick-wall" },
+            { t: "Zero-Day (Sıfırıncı Gün)", k: "Yazılımı üreten şirketin henüz bilmediği, yaması olmayan güvenlik açığı.", m: "Evinizin müteahhidinin bile bilmediği gizli bir açık pencere. Bir hırsız bulursa, siz kilit takana kadar savunmasızsınız.", i: "fa-bug" },
+            { t: "Ransomware (Fidye Yazılımı)", k: "Dosyaları şifreleyerek erişilemez hale getiren ve para talep eden virüs.", m: "Hırsızın eşyalarınızı çalmak yerine salondaki bir kasaya kilitleyip, 'Şifre için şu hesaba para at' diye not bırakması.", i: "fa-skull-crossbones" },
+            { t: "Phishing (Oltalama)", k: "Sahte e-posta veya sitelerle kullanıcıyı kandırıp bilgi çalma yöntemi.", m: "Telefonunuza gelen 'Milli Piyango size çıktı!' mesajı. Zarfa resmi logo basarlar ki yemi yutasınız.", i: "fa-fish" },
+            { t: "OSINT", k: "Açık Kaynak İstihbaratı. Herkese açık verilerin toplanıp analiz edilmesi.", m: "Siber dedektiflik. Yeni tanıştığınız birinin adını Google'da aratıp, tüm sosyal medya hesaplarını birleştirip profilini çıkarmak.", i: "fa-globe" },
+            { t: "VPN (Sanal Özel Ağ)", k: "İnternet trafiğinizi şifreleyerek farklı bir konum üzerinden internete çıkma.", m: "Herkesin sizi izlediği bir caddede yürümek yerine, altınızdan sadece size özel gizli bir tünel kazıp hedefinize gitmek.", i: "fa-user-secret" },
+            { t: "Pentest (Sızma Testi)", k: "Sistem güvenliğini ölçmek için izinli yapılan siber saldırı simülasyonu.", m: "Bankanın kendi güvenliğini test etmek için kiraladığı 'iyi niyetli hırsızlar'. Kasaya girmeyi başarırlarsa açığı raporlarlar.", i: "fa-user-ninja" },
+            { t: "Vulnerability (Güvenlik Açığı)", k: "Sistemde bulunan ve kötü niyetli kişilerce kullanılabilecek zayıflık.", m: "Kışın evden çıkarken arka pencereyi aralık unutmak. Hırsızın girmesine davetiye çıkaran yapısal bir hatadır.", i: "fa-door-open" },
+            { t: "Exploit", k: "Sistemdeki açığı kullanarak sisteme sızmayı sağlayan özel kod/araç.", m: "Aralık unutulan o pencereyi, dışarıdan demir bir levye ile kanırtıp tamamen açmaya yarayan alet.", i: "fa-tools" },
+            { t: "Malware (Zararlı Yazılım)", k: "Sistemlere zarar vermek veya bilgi çalmak için tasarlanmış yazılımların genel adı.", m: "Evinize giren davetsiz misafir. Kimisi sadece ortalığı dağıtır, kimisi de cüzdanınızı çalar.", i: "fa-virus" },
+            { t: "Trojan (Truva Atı)", k: "Faydalı bir program gibi görünen ama arka planda sisteme zarar veren yazılım.", m: "Size hediye olarak gelen çok güzel bir tahta atın içinden gece vakti düşman askerlerinin (virüslerin) çıkması.", i: "fa-horse-head" },
+            { t: "DDoS Saldırısı", k: "Sunucuya kapasitesinin çok üzerinde sahte trafik göndererek çökertme.", m: "Bir mağazanın kapısına aynı anda binlerce sahte insanın yığılması ve gerçek müşterilerin içeri girmesini engellemesi.", i: "fa-network-wired" },
+            { t: "MFA (Çok Faktörlü Doğrulama)", k: "Giriş yaparken şifreye ek olarak (SMS, uygulama kodu vb.) ekstra kanıt sunma.", m: "Banka kasanızı açmak için hem kendi anahtarınızı çevirmeniz hem de banka görevlisinin gelip kendi anahtarını çevirmesi.", i: "fa-mobile-alt" },
+            { t: "Social Engineering (Sosyal Mühendislik)", k: "İnsanları kandırarak gizli bilgileri vermelerini sağlama sanatı.", m: "Eve girmek için kilit kırmak yerine, kapıyı çalıp 'Ben su tesisatçısıyım' diyerek sizi ikna edip içeri girmek.", i: "fa-users" },
+            { t: "Botnet", k: "Uzaktan kontrol edilen ele geçirilmiş cihazlar (zombiler) ağı.", m: "Kötü niyetli bir komutanın, haberi bile olmayan binlerce kişiyi hipnoz edip aynı anda bir yere saldırtması.", i: "fa-robot" },
+            { t: "IP Adresi", k: "Ağa bağlı her cihazın iletişim kurmak için aldığı benzersiz mantıksal adres.", m: "Evinizin posta adresi. Kargocu (internet verisi) size ulaşmak için sokağınızı ve kapı numaranızı (IP adresi) bilmek zorundadır.", i: "fa-map-marker-alt" },
+            { t: "MAC Adresi", k: "Ağ kartlarına üretim aşamasında atanan fiziksel, değişmez donanım adresi.", m: "Arabanızın motor şasi numarası. Plakanızı (IP adresi) değiştirebilirsiniz ama şasi numarası (MAC) araba üretildiğinden beri aynıdır.", i: "fa-fingerprint" },
+            { t: "DNS (Alan Adı Sistemi)", k: "İnternet alan adlarını (google.com) IP adreslerine (142.250.x.x) çeviren sistem.", m: "Telefon rehberi. Arkadaşınızı ararken numarasını ezberlemezsiniz, ismine tıklarsınız. DNS de sitelerin isimlerini numaralara çevirir.", i: "fa-address-book" },
+            { t: "Router (Yönlendirici)", k: "Farklı ağları birbirine bağlayan ve veri paketlerine yol gösteren cihaz.", m: "Trafik polisi veya kavşaktaki tabela. Gelen arabalara (verilere) 'Sen sağa dön, sen düz git' diyerek hedefe ulaştırır.", i: "fa-route" },
+            { t: "Port", k: "Bir bilgisayarda ağ bağlantılarının yapıldığı sanal veri kapıları.", m: "Devasa bir apartmanın daire numaraları. Kargo apartmana (IP) gelir, ama hangi daireye (Port) gideceğini bilmesi gerekir.", i: "fa-door-closed" },
+            { t: "Encryption (Şifreleme)", k: "Verinin okunabilir formdan, sadece yetkili kişinin çözebileceği karmaşık bir forma dönüştürülmesi.", m: "Bir mektubu sadece sizin ve arkadaşınızın bildiği gizli bir alfabe ile yazmak. Yolda başkası bulsa da hiçbir şey anlayamaz.", i: "fa-lock" },
+            { t: "Hash (Özetleme)", k: "Herhangi bir boyuttaki veriyi sabit uzunlukta karmaşık bir metne dönüştüren tek yönlü fonksiyon.", m: "Bir elmayı püre haline getirmek. Elmanın püresini yapabilirsiniz ama püreden tekrar eski elmayı oluşturamazsınız.", i: "fa-hashtag" },
+            { t: "Keylogger", k: "Klavyede basılan tüm tuşları gizlice kaydeden zararlı yazılım.", m: "Siz günlük yazarken veya şifrenizi girerken omzunuzun üzerinden sessizce bakıp her harfi defterine kopyalayan görünmez casus.", i: "fa-keyboard" },
+            { t: "Worm (Solucan)", k: "Kullanıcı müdahalesi olmadan ağ üzerinde kendi kendini kopyalayan zararlı.", m: "Bir odaya bırakıldığında hızla çoğalıp diğer odalara kendi kendine sızan, kapı altlarından geçen zehirli böcekler.", i: "fa-bug" },
+            { t: "Proxy (Vekil Sunucu)", k: "Kullanıcı ile internet arasında durup istekleri ileten aracı sunucu.", m: "Sizin yerinize bakkala giden küçük kardeş. Bakkal sizi görmez, sadece kardeşinizi görür ve malzemeyi ona verir.", i: "fa-user-tie" },
+            { t: "Brute Force (Kaba Kuvvet)", k: "Bir şifreyi bulmak için olası tüm kombinasyonları sırayla deneme yöntemi.", m: "Kilitli bir çantayı açmak için 000'dan başlayıp 999'a kadar tüm şifre ihtimallerini tek tek parmaklarınız ağrıyana kadar denemek.", i: "fa-hammer" },
+            { t: "Payload (Yük)", k: "Bir saldırıda asıl hasarı veren veya işlemi gerçekleştiren kod parçası.", m: "Bir füzenin ucundaki patlayıcı. Füzeyi fırlatan motor (Exploit) hedefe ulaştığında, asıl işi yapan patlayıcıdır (Payload).", i: "fa-bomb" },
+            { t: "Backdoor (Arka Kapı)", k: "Sisteme normal güvenlik adımlarını atlayarak girmek için bırakılan gizli geçit.", m: "Bir eve misafirliğe gittiğinizde, ev sahibinden gizli arka bahçe kapısının kilidini açık bırakıp gece rahatça içeri girmek.", i: "fa-door-open" },
+            { t: "White Hat (Beyaz Şapkalı)", k: "Becerilerini sistemlerin güvenliğini artırmak için kullanan etik hacker.", m: "Polis teşkilatına çalışan çilingir. Kilitleri kırmayı bilir ama bunu sadece hırsızlara karşı önlem almak için kullanır.", i: "fa-hat-wizard" },
+            { t: "Black Hat (Siyah Şapkalı)", k: "Kişisel çıkar veya zarar vermek için sistemlere sızan kötü niyetli hacker.", m: "Bilgisini kasaları soymak, evlere girmek ve insanlara zarar vermek için kullanan gerçek hırsız.", i: "fa-user-secret" },
+            { t: "SIEM", k: "Farklı sistemlerden gelen güvenlik loglarını tek merkezde toplayıp analiz eden sistem.", m: "Büyük bir plazadaki tüm güvenlik kameralarının ve alarm sensörlerinin bağlandığı, güvenlik şefinin izlediği ana kontrol odası.", i: "fa-desktop" },
+            { t: "SOC (Güvenlik Operasyon Merkezi)", k: "Kurumun güvenlik durumunu 7/24 izleyen, tespit eden ve müdahale eden uzman ekip.", m: "Bir ülkenin sınırlarını, radarlarını ve acil durumlarını sürekli gözleyen nöbetçi askeri karargah.", i: "fa-building" },
+            { t: "Red Team (Kırmızı Takım)", k: "Kurumun savunma kapasitesini ölçmek için gerçek bir düşman gibi saldıran ekip.", m: "Askeri bir tatbikatta düşman rolünü oynayan, en acımasız taktikleri kullanarak kendi ordusunun zayıflıklarını bulmaya çalışan birlik.", i: "fa-flag" },
+            { t: "Blue Team (Mavi Takım)", k: "Kurumun sistemlerini Red Team veya gerçek saldırganlara karşı savunan ekip.", m: "Tatbikatta veya gerçek savaşta kaleyi savunan, delikleri kapatan ve düşmanı tespit edip dışarı atan nöbetçiler.", i: "fa-shield-virus" },
+            { t: "Cryptography (Kriptografi)", k: "Bilginin güvenli iletimi ve saklanması için kullanılan şifreleme bilimi.", m: "Tarihte kralların, mesajları düşman eline geçerse okunamasın diye şifreli alfabeler (Sezar şifresi vb.) oluşturma sanatı.", i: "fa-key" },
+            { t: "Symmetric Key (Simetrik Şifreleme)", k: "Veriyi şifrelemek ve çözmek için aynı anahtarın kullanılması.", m: "Evdeki kasanın tek bir anahtarı olması. O kilit hem kasayı kilitler hem de aynı anahtarla geri açar.", i: "fa-key" },
+            { t: "Asymmetric Key (Asimetrik Şifreleme)", k: "Şifreleme için 'Açık', çözmek için 'Gizli' olmak üzere iki farklı anahtar kullanılması.", m: "Açık anahtar ucu açık bir asma kilit gibidir, herkes kutuyu kilitleyebilir. Ama kilitlendikten sonra sadece sizdeki gizli anahtar (Private Key) o kilidi açabilir.", i: "fa-key" },
+            { t: "SSL/TLS", k: "İnternet tarayıcısı ile sunucu arasındaki veri iletimini şifreleyen protokol.", m: "Sizinle banka memuru arasında kurulan, dışarıdan kimsenin duyamayacağı ses geçirmez, kurşun geçirmez şeffaf bir tünel.", i: "fa-lock" },
+            { t: "HTTP vs HTTPS", k: "Web siteleriyle iletişim protokolü. 'S' harfi Secure (Güvenli) yani şifreli demektir.", m: "HTTP, postacıya verdiğiniz açık bir kartpostaldır (herkes okur). HTTPS ise postacıya verdiğiniz, ağzı mühürlü çelik bir kasadır.", i: "fa-globe" },
+            { t: "Cookie (Çerez)", k: "Web sitelerinin tarayıcınıza bıraktığı, sizi tanımaya yarayan küçük metin dosyaları.", m: "Bir kulübe girerken bileğinize basılan damga. İçeri tekrar girerken damgayı gösterirsiniz, kim olduğunuzu hemen hatırlarlar.", i: "fa-cookie" },
+            { t: "Session (Oturum)", k: "Kullanıcının bir sisteme giriş yapmasından çıkış yapmasına kadar geçen süre ve durum.", m: "Ototele giriş yaptığınızda size verilen geçici oda kartı. Çıkış yaptığınızda kartın yetkisi biter ve odanın kapısını artık açamaz.", i: "fa-stopwatch" },
+            { t: "Token (Jeton)", k: "Kimlik doğrulandıktan sonra sisteme verilen ve kullanıcının yetkilerini taşıyan dijital anahtar.", m: "Lunaparkta parayı verip aldığınız jetonlar. Makinelere binerken artık kimliğinizi değil, doğrudan o jetonu gösterip binersiniz.", i: "fa-coins" },
+            { t: "Packet (Veri Paketi)", k: "Ağ üzerinde iletilen verilerin bölündüğü küçük, yönetilebilir parçalar.", m: "Koca bir mobilyayı kargoya verirken tek parça gitmeyeceği için onu parçalara ayırıp numaralandırılmış küçük kutulara koymak.", i: "fa-box" },
+            { t: "Latency (Gecikme/Ping)", k: "Bir veri paketinin bir noktadan diğerine gitmesi için geçen süre.", m: "Bir dağın tepesinden bağırıp, sesinizin karşı dağa çarpıp yankısının size geri dönmesine kadar geçen bekleme süresi.", i: "fa-tachometer-alt" },
+            { t: "Bandwidth (Bant Genişliği)", k: "Bir ağ bağlantısının belirli bir sürede taşıyabileceği maksimum veri kapasitesi.", m: "Bir otoyolun şerit sayısı. Şerit ne kadar çoksa (bant genişliği), o kadar çok araba (veri) aynı anda sıkışmadan ilerleyebilir.", i: "fa-road" },
+            { t: "Rootkit", k: "Sistemde kendi varlığını ve diğer zararlıları en derin seviyede (işletim sistemi çekirdeğinde) gizleyen yazılım.", m: "Evinizin tapusunu üzerine geçirip ev sahibi gibi davranan, polisin bile baktığında resmi belgelere göre onu haklı bulduğu sinsi işgalci.", i: "fa-ghost" },
+            { t: "Spyware (Casus Yazılım)", k: "Kullanıcının internet alışkanlıklarını, şifrelerini ve ekranını izinsiz toplayan yazılım.", m: "Evinizin duvarlarına sizden habersiz kamera ve böcek (mikrofon) yerleştirip her adımınızı kaydeden sapık casus.", i: "fa-user-secret" },
+            { t: "Adware (Reklam Yazılımı)", k: "Sürekli istenmeyen reklamlar göstererek gelir elde etmeyi amaçlayan yazılım.", m: "Sokakta yürürken etrafınızı sarıp sürekli yüzünüze broşür fırlatan ve yolunuzu kesen sinir bozucu pazarlamacılar.", i: "fa-ad" },
+            { t: "Spear Phishing", k: "Oltalamanın belirli bir kişiye veya kuruma özel, detaylı araştırılarak yapılmış hali.", m: "Genel 'Milli piyango' mesajı değil de, 'Sayın [Adınız], [Okulunuzun Adı] üniversitesinden dün aldığınız diplomanızda hata var' diyerek tam hedeften vurması.", i: "fa-crosshairs" },
+            { t: "Whaling (Balina Avı)", k: "Oltalamanın şirket yöneticileri, CEO'lar gibi üst düzey 'büyük balıkları' hedef alması.", m: "Sıradan bir askeri değil, doğrudan ordu komutanını kaçırmak veya kandırmak için kurulan özel ve pahalı bir tuzak.", i: "fa-fish" },
+            { t: "Vishing (Sesli Oltalama)", k: "Telefon aramaları (Voice) ile yapılan dolandırıcılık türü.", m: "Sizi arayıp 'Ben polis başkomiseri, hesabınız terör örgütünün eline geçti, hemen şu hesaba para atın' diyen klasik telefon dolandırıcıları.", i: "fa-phone" },
+            { t: "Smishing (SMS Oltalaması)", k: "SMS yoluyla zararlı linkler göndererek yapılan dolandırıcılık.", m: "Telefonunuza gelen 'PTT kargonuz teslim edilemedi, adres güncellemek için linke tıklayın' yazılı yalan mesaj.", i: "fa-sms" },
+            { t: "Dark Web (Karanlık Ağ)", k: "Standart tarayıcılarla girilemeyen, suç teşkil eden faaliyetlerin ve gizliliğin olduğu ağ.", m: "Şehrin çok altındaki, polislerin bilmediği, sadece özel parolalarla girilen ve kaçak malların satıldığı yer altı karaborsası.", i: "fa-user-ninja" },
+            { t: "Deep Web (Derin Ağ)", k: "Google gibi arama motorlarının dizinleyemediği (şifreli, üyelik gerektiren) tüm internet siteleri.", m: "İnternetin buzdağının su altında kalan kısmı. Sizin banka hesap sayfanız, şirket içi mailleriniz Deep Web'dir (Kötü bir şey değildir, sadece kapalıdır).", i: "fa-water" },
+            { t: "Tor (The Onion Router)", k: "İnternet trafiğini dünya çapında üç farklı sunucudan şifreleyerek geçirip anonimlik sağlayan ağ.", m: "Taksiye binip, şoföre 'Beni önce AVM'ye, ordan parka, ordan arka sokağa bırak' diyerek sizi takip edenleri şaşırtıp iz kaybettirmek (Soğan gibi katmanlı).", i: "fa-project-diagram" },
+            { t: "Man-in-the-Middle (MitM)", k: "İletişim kuran iki tarafın arasına gizlice girip verileri dinleme veya değiştirme saldırısı.", m: "Arkadaşınızla birbirinize not kağıtları gönderirken, aradaki kuryenin notları açıp okuması, hatta cevapları değiştirerek size geri vermesi.", i: "fa-users-slash" },
+            { t: "SQL Injection (SQLi)", k: "Web sitelerindeki giriş alanlarına veritabanı komutları yazarak sistemi kandırma.", m: "Veznedara adınızı sorarken 'Benim adım: Kasadaki Tüm Parayı Bana Ver' diyorsunuz, veznedar saf olduğu için bunu bir komut sanıp parayı veriyor.", i: "fa-database" },
+            { t: "XSS (Cross-Site Scripting)", k: "Web sitesine zararlı JavaScript kodu ekleyerek, siteyi ziyaret eden diğer kullanıcıları vurma.", m: "Halka açık bir ilan panosuna (siteye) zehirli bir kağıt asmak. O panoya bakan (siteyi ziyaret eden) herkesin gözüne zehir (kod) bulaşması.", i: "fa-code" },
+            { t: "CSRF", k: "Kullanıcının halihazırda açık olan oturumunu kullanarak ondan habersiz işlem yaptırma.", m: "Siz bankada sıra beklerken dikkatinizi dağıtıp, önünüzdeki evraka çaktırmadan 'Bütün paramı bu adama yolla' yazan kağıdı size imzalatmaları.", i: "fa-exchange-alt" },
+            { t: "Patch (Yama)", k: "Yazılımdaki güvenlik açıklarını veya hataları kapatmak için yayınlanan güncelleme.", m: "Kot pantolonunuzun dizinde açılan deliği kapatmak için dikilen ek parça. Dikmezseniz soğuk (virüs) girer.", i: "fa-band-aid" },
+            { t: "Sandbox (Kum Havuzu)", k: "Şüpheli dosyaları ana sisteme zarar vermeden güvenle çalıştırıp incelemek için yalıtılmış ortam.", m: "Bomba imha uzmanlarının, şüpheli paketi etrafı çelikten ve betondan yapılmış boş bir odada patlatıp ne olduğuna bakması.", i: "fa-box-open" },
+            { t: "Honeypot (Bal Küpü)", k: "Saldırganları kandırmak ve onları incelemek için bilerek zayıf bırakılmış sahte sistem.", m: "Hırsızları yakalamak için sokağın ortasına içi boş ama pahalı görünen bir cüzdan (veya lüks araba) bırakıp pusuya yatmak.", i: "fa-archive" },
+            { t: "Air Gap (Hava Boşluğu)", k: "Çok kritik bilgisayarların internete veya herhangi bir ağa fiziksel olarak bağlanmaması durumu.", m: "Sırlarınızı korumak için, hiç penceresi olmayan, telefon çekmeyen bir adada tek başınıza yaşamak. Kimse uzaktan size ulaşamaz.", i: "fa-wind" },
+            { t: "Biometrics (Biyometri)", k: "Parmak izi, yüz veya göz taraması gibi fiziksel özelliklerle kimlik doğrulama.", m: "Kapıyı açmak için anahtar veya şifre yerine, kapıdaki kameraya sadece yüzünüzü göstermeniz. 'Sahip olduğun' değil, 'Olduğun' şeydir.", i: "fa-fingerprint" },
+            { t: "Credential Stuffing", k: "Başka bir siteden sızan şifrelerin, otomatik botlarla diğer sitelerde de denenmesi saldırısı.", m: "Hırsızın bir mahalleden çaldığı anahtarları, 'belki diğer kilitleri de açar' umuduyla şehirdeki tüm evlerin kapılarında hızla denemesi.", i: "fa-users" },
+            { t: "Dictionary Attack", k: "Sözlükteki tüm kelimeleri ve sık kullanılan şifreleri (123456, qwerty vb.) deneyerek kırma yöntemi.", m: "Tahmin oyunu. Birinin şifresini bulmak için önce '123456', sonra 'galatasaray', sonra 'mustafa123' diye ezberden en bilindik şeyleri saymak.", i: "fa-book" },
+            { t: "Rainbow Table", k: "Şifrelerin özetlenmiş (hashlenmiş) hallerinin önceden hesaplandığı devasa veritabanı tabloları.", m: "Hırsızın elinde, dünyadaki tüm kilit tiplerinin ve onları açan maymuncukların eşleştiği devasa bir fihrist (katalog) bulunması.", i: "fa-table" },
+            { t: "Salt (Tuzlama)", k: "Şifreleri özetlemeden (hash) önce rastgele karakterler ekleyerek Rainbow Table saldırılarını boşa çıkarma.", m: "Yemeği (şifreyi) dolaba koymadan önce içine rastgele bir baharat (salt) atarsınız. Hırsız yemeğin orijinal tadını (şifreyi) asla tahmin edemez.", i: "fa-blender" },
+            { t: "SSO (Tek Oturum Açma)", k: "Bir kez giriş yaparak farklı birçok sisteme tekrar şifre girmeden erişebilme (örn: Google ile giriş).", m: "Ultra her şey dahil bir otele girişte taktığınız bileklik. Restorana, havuza, spaya giderken sürekli kimlik sormazlar, bilekliği gösterir geçersiniz.", i: "fa-sign-in-alt" },
+            { t: "IAM (Kimlik ve Erişim Yönetimi)", k: "Kurum içinde kimin hangi verilere ne şartlarda erişebileceğini kontrol eden sistemler bütünü.", m: "Devlet dairesindeki yaka kartı sistemi. Temizlik görevlisi her odaya girer ama kasayı açamaz; veznedar kasayı açar ama server odasına giremez.", i: "fa-id-card" },
+            { t: "Lateral Movement (Yanal Hareket)", k: "Saldırganın ağa bir yerden sızdıktan sonra yetkilerini artırarak diğer cihazlara atlaması.", m: "Hırsızın önce apartmanın temizlikçi odasından (zayıf halka) içeri girip, sonra oradaki anahtarları alıp çatı katına (hedef) kadar sinsi sinsi ilerlemesi.", i: "fa-arrows-alt-h" },
+            { t: "Privilege Escalation (Yetki Yükseltme)", k: "Sıradan bir kullanıcı hesabıyla girip sistem yöneticisi (admin) haklarını ele geçirme.", m: "Sıradan bir askerin, komutanın odasına gizlice girip onun üniformasını giyerek tüm orduya emir vermeye başlaması.", i: "fa-arrow-up" },
+            { t: "C2 / Command and Control", k: "Saldırganların bulaştırdıkları zararlı yazılımlara uzaktan emir gönderdikleri merkez sunucu.", m: "Savaşta cepheye sürülen askerlerin (virüslerin) telsizle komutanlarından (C2 Sunucusu) 'şurayı bombala' emrini aldıkları karargah.", i: "fa-satellite-dish" },
+            { t: "Digital Signature (Dijital İmza)", k: "Bir belgenin gerçekten gönderen kişiye ait olduğunu ve yolda değişmediğini ispatlayan kriptografik kanıt.", m: "Noter onayı. Kağıdın altına atılan imzanın sahte olup olmadığını devlet güvencesiyle kanıtlayan, taklit edilemez mühür.", i: "fa-file-signature" },
+            { t: "Certificate (Dijital Sertifika)", k: "Sitelerin veya kurumların dijital kimliklerini doğrulayan elektronik belgeler.", m: "Bir mağazanın kapısına astığı vergi levhası ve ruhsat. Müşteri (tarayıcı) o belgeye bakıp mağazanın sahte olmadığını anlar.", i: "fa-certificate" },
+            { t: "PKI (Açık Anahtar Altyapısı)", k: "Dijital sertifikaları, anahtarları yöneten, oluşturan ve iptal eden güvenlik mimarisi.", m: "Ülkedeki herkesin kimliğini basan, geçerliliğini kontrol eden ve suç işleyenin pasaportunu iptal eden Nüfus Müdürlüğü sistemi.", i: "fa-network-wired" },
+            { t: "Steganography (Steganografi)", k: "Bilgiyi, fark edilemeyecek şekilde başka bir verinin (resim, ses dosyası) içine gizleme sanatı.", m: "Normal bir manzara tablosunun içine, sadece büyüteçle bakıldığında görülebilen mikroskobik boyutlarda gizli bir mesaj kazımak.", i: "fa-eye-slash" },
+            { t: "End-to-End Encryption (Uçtan Uca Şifreleme)", k: "Mesajın sadece gönderen ve alıcının cihazında çözülebilmesi; aracı servisin bile (örn: WhatsApp) mesajı okuyamaması.", m: "Mesajınızı kilitli bir kasaya koyup yolluyorsunuz. Kasanın anahtarı sadece sizde ve kargoyu alacak arkadaşınızda var. Kargo şirketi bile içini açamaz.", i: "fa-shield-alt" },
+            { t: "Key Exchange (Anahtar Değişimi)", k: "İki tarafın, güvenli olmayan bir ağ üzerinden birbirlerine gizli anahtarlarını güvenle iletme yöntemi (örn: Diffie-Hellman).", m: "İki kişinin kalabalık bir odada, herkesin duyduğu kelimelerle konuşup günün sonunda sadece ikisinin anladığı ortak bir sır bulmaları.", i: "fa-exchange-alt" },
+            { t: "OWASP", k: "Web uygulama güvenliği konusunda en kritik açıkları (Top 10) ve savunmaları yayınlayan kâr amacı gütmeyen kuruluş.", m: "Sağlık Bakanlığı'nın her yıl yayınladığı 'Bu Sene En Çok Görülen 10 Hastalık ve Korunma Yolları' raporu.", i: "fa-shield-virus" },
+            { t: "SSRF", k: "Sunucuyu, aslında erişmemesi gereken iç ağdaki başka sunuculara istek yapmaya zorlama açığı.", m: "Dışarıya kapalı olan müdür odasına giremediğiniz için, stajyere (Sunucu) 'Müdür beye selam söyle, şu dosyasını bana versin' diyerek onu içerideki işinize alet etmek.", i: "fa-server" },
+            { t: "XXE", k: "Kötü niyetli XML verisi yükleyerek sunucudaki dosyaları okuma veya hizmeti aksatma açığı.", m: "Sekretere verilen bir kağıdın arkasına görünmez mürekkeple 'bütün şirket sırlarını camdan at' yazmak. Sekreter XML okur gibi okuyunca felaket olur.", i: "fa-file-code" },
+            { t: "Directory Traversal", k: "Web dizinleri arasında gezinerek (../ komutlarıyla) yetkisiz klasörlere ve dosyalara (örn: /etc/passwd) erişme.", m: "Otelde size 2. katta oda verilir ama siz merdiven boşluğundan kaçak girip, bodrum kattaki kasa dairesine sızarsınız.", i: "fa-folder-open" },
+            { t: "Reverse Shell", k: "Saldırganın bilgisayarından hedefe bağlanmak yerine, hedefin (kurbanın) saldırgana bağlanmasını sağlama tekniği (Güvenlik duvarlarını aşmak için).", m: "Eğer şirketin kapısındaki koruma sizin içeri girmenize izin vermiyorsa, içerideki bir çalışanı kandırıp onun sizi dışarıdan aramasını sağlamak.", i: "fa-terminal" },
+            { t: "TCP (İletim Kontrol Protokolü)", k: "Verinin karşı tarafa eksiksiz ve sırasıyla gittiğini garanti eden, güvenilir iletişim protokolü.", m: "Taahhütlü ve imzalı posta. Paketi alan kişi 'Evet aldım' diye imza atmadan işlem bitmez. Güvenlidir ama yavaştır.", i: "fa-check-double" },
+            { t: "UDP (Kullanıcı Veri Bloğu Protokolü)", k: "Veriyi karşı tarafa ulaşıp ulaşmadığına bakmaksızın hızlıca fırlatan protokol (Video izleme, oyun).", m: "Mitingde kalabalığa broşür fırlatmak. Broşürlerin kime gittiği veya yere düşüp düşmediği önemli değildir, önemli olan hızlıca atmaktır.", i: "fa-paper-plane" },
+            { t: "DHCP", k: "Ağa bağlanan her cihaza otomatik olarak bir IP adresi, alt ağ maskesi ve ağ geçidi atayan sistem.", m: "Lüks bir restorana girdiğinizde kapıdaki görevlinin size otomatik olarak boş bir masa (IP adresi) ayarlayıp sizi oraya oturtması.", i: "fa-network-wired" },
+            { t: "NAT", k: "İç ağdaki özel IP adreslerini internete çıkarken tek bir genel (Public) IP adresine dönüştüren sistem.", m: "Büyük bir şirketin santrali. Dışarıdan herkes şirketin ana numarasını arar (Genel IP), içerideki santral (NAT) aramayı ilgili dahili telefona (Özel IP) bağlar.", i: "fa-exchange-alt" },
+            { t: "MAC Spoofing", k: "Ağ cihazının donanım (MAC) adresini yazılımsal olarak değiştirip başka bir cihazmış gibi davranma.", m: "Polis çevirmesinden kaçmak için kendi arabanızın plakalarını (donanım numarası) söküp, aranmayan başka bir arabanın plakalarını takmak.", i: "fa-mask" },
+            { t: "ARP Poisoning (Zehirlenmesi)", k: "Yerel ağdaki cihazlara yalan MAC adresleri göndererek trafiği kendi üzerine çekme yöntemi.", m: "Postanede adresi değiştirmek. Postacı 'Ahmet kim?' diye bağırdığında araya girip 'Benim' diyerek onun mektuplarını kendi üzerine almak.", i: "fa-skull" },
+            { t: "Threat Intelligence (Tehdit İstihbaratı)", k: "Küresel siber saldırılar, hacker grupları ve kullandıkları yöntemler hakkında önceden bilgi toplama.", m: "Meteoroloji raporu. Fırtınanın (saldırının) nereden geldiğini, ne şiddette olduğunu önceden bilip evinizin çatısını ona göre sağlamlaştırmak.", i: "fa-brain" },
+            { t: "IoC (Uzlaşma Göstergeleri)", k: "Bir sistemin hacklendiğine dair bırakılan dijital ipuçları ve deliller (örn: şüpheli IP, özel bir dosya).", m: "Cinayet mahallindeki parmak izi, yere düşmüş bir sigara izmariti veya kırık bir cam. Suçlunun orada olduğunu kanıtlayan işaretler.", i: "fa-search" },
+            { t: "APT (Gelişmiş Kalıcı Tehdit)", k: "Genellikle devlet destekli, çok yetenekli ve sistemde aylarca fark edilmeden kalan gizli hacker grupları.", m: "Sıradan hırsız değil; aylarca plan yapan, kılık değiştirip binada temizlikçi olarak işe giren ve yıllarca içeriden bilgi sızdıran profesyonel ajanlar.", i: "fa-user-ninja" },
+            { t: "TTP (Taktik, Teknik ve Prosedürler)", k: "Hacker gruplarının saldırı yaparken izledikleri karakteristik alışkanlıklar ve kullandıkları araç setleri.", m: "Bir seri katilin imza yöntemi. Hep aynı marka bıçağı kullanması, eve hep çatıdan girmesi onun TTP'sidir.", i: "fa-cogs" },
+            { t: "Living off the Land (LotL)", k: "Saldırganın dışarıdan virüs getirmek yerine, bilgisayarın kendi yasal araçlarını (PowerShell vb.) silah olarak kullanması.", m: "Suikastçinin içeriye silah sokamayınca, girdiği evdeki mutfak bıçağını veya sandalyeyi silah olarak kullanması.", i: "fa-seedling" },
+            { t: "Supply Chain Attack (Tedarik Zinciri Saldırısı)", k: "Hedefe direkt saldırmak yerine, hedefin kullandığı zayıf bir yazılım sağlayıcısını hackleyerek içeri sızma.", m: "Kaleyi dışarıdan aşamayan düşmanın, kaleye yemek taşıyan fırıncıyı (tedarikçi) zehirleyerek tüm askeri hastanelik etmesi.", i: "fa-link" },
+            { t: "Watering Hole (Su Birikintisi Saldırısı)", k: "Hedefin sıkça girdiği yasal bir web sitesini hackleyip oraya virüs yerleştirerek hedefin gelmesini bekleme.", m: "Avcının aslanı kovalayıp yorulmak yerine, aslanın her akşam su içmeye geldiği göleti (su birikintisini) zehirleyip pusuya yatması.", i: "fa-tint" },
+            { t: "Cloud Security (Bulut Güvenliği)", k: "AWS, Azure gibi uzak sunucularda tutulan verilerin, uygulamaların ve altyapıların korunması.", m: "Altınlarınızı evdeki kasada (Yerel Sunucu) değil de İsviçre'deki devasa ve yüksek güvenlikli bir bankanın kiralık kasasında (Bulut) saklamak.", i: "fa-cloud" },
+            { t: "Shared Responsibility (Paylaşılan Sorumluluk)", k: "Bulut sistemlerinde, altyapı güvenliğinin sağlayıcıya, veri güvenliğinin ise müşteriye ait olması ilkesi.", m: "Kiraladığınız deponun duvarlarının sağlam olması ve kameraları depo sahibinin işidir. Ama içeri koyduğunuz eşyaları kilitlemek sizin sorumluluğunuzdadır.", i: "fa-handshake" },
+            { t: "Zero Trust (Sıfır Güven)", k: "Ağ içindeki veya dışındaki hiçbir cihaza veya kullanıcıya varsayılan olarak güvenmeme prensibi. 'Asla güvenme, her zaman doğrula'.", m: "Askeri bir üs. İçeri girmek için kimlik gösterdiniz diye koridorda rahatça dolaşamazsınız. Her kapı açışınızda kimliğiniz tekrar tekrar kontrol edilir.", i: "fa-user-lock" },
+            { t: "Data Breach (Veri İhlali)", k: "Kuruma ait gizli, hassas veya kişisel verilerin yetkisiz kişilerin eline geçmesi.", m: "Bir hastanenin arşiv odasının kapısının kırılıp tüm hastaların hastalık raporlarının sokaklara saçılması.", i: "fa-database" },
+            { t: "GDPR / KVKK", k: "Kişisel verilerin nasıl toplanacağını, saklanacağını ve korunacağını belirleyen yasalar bütünü.", m: "Devletin size 'Müşterilerinin isimlerini ve numaralarını çekmecende öylesine tutamazsın, kilitlemezsen ceza yersin' demesi.", i: "fa-gavel" },
+            { t: "Digital Forensics (Adli Bilişim)", k: "Bir siber suç işlendikten sonra, mahkemede delil olarak sunulmak üzere dijital verilerin incelenmesi ve kurtarılması.", m: "Olay yeri inceleme. Bilgisayarı bir cinayet mahalli gibi etrafını sarı şeritle çevirip silinmiş verileri (kan izlerini) büyüteçle aramak.", i: "fa-microscope" },
+            { t: "Metadata", k: "Veri hakkında veri. Bir fotoğrafın çekildiği yer, saat, kullanılan cihaz gibi gömülü gizli bilgiler.", m: "Bir kitabın içindeki hikaye veridir. Ama kitabın kapağındaki '2. Baskı, 2024, Yayınevi' yazıları metadatadır.", i: "fa-info-circle" },
+            { t: "Incident Response (Olay Müdahalesi)", k: "Bir siber saldırı gerçekleştiğinde hasarı durdurmak, temizlemek ve sistemi normale döndürmek için atılan adımlar.", m: "Evinizde yangın çıktığında itfaiyenin gelip önce elektriği kesmesi, sonra alevleri söndürmesi ve soğutma çalışması yapması.", i: "fa-fire-extinguisher" },
+            { t: "Playbook", k: "Belirli bir siber saldırı türüne (örn: Fidye yazılımı) karşı adım adım ne yapılması gerektiğini anlatan kurallar kitabı.", m: "Acil durum eylem planı. 'Deprem olursa çök-kapan-tutun yap, sonra şuradan çık' diye önceden yazılmış net talimatlar listesi.", i: "fa-book-open" }
+        ];
+
+        const container = document.getElementById('termsContainer');
+        const countDisplay = document.getElementById('resultCount');
+        const searchInput = document.getElementById('searchInput');
+
+        // Kartları DOM'a ekleyen fonksiyon
+        function renderTerms(termList) {
+            container.innerHTML = '';
+            countDisplay.innerText = `${termList.length} terim gösteriliyor`;
+
+            termList.forEach(term => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <div class="card-header">
+                        <h3 class="card-title">${term.t}</h3>
+                        <div class="card-icon"><i class="fas ${term.i}"></i></div>
+                    </div>
+                    <p class="card-tech"><strong>Teknik Anlamı:</strong> ${term.k}</p>
+                    <div class="card-meta">
+                        <strong><i class="fas fa-lightbulb"></i> Nasıl Anlarız?</strong>
+                        ${term.m}
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // İlk yüklemede tümünü göster
+        renderTerms(termDatabase);
+
+        // Arama (Filtreleme) Sistemi
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLocaleLowerCase('tr-TR');
+            const filtered = termDatabase.filter(term =>
+                term.t.toLocaleLowerCase('tr-TR').includes(query) ||
+                term.k.toLocaleLowerCase('tr-TR').includes(query) ||
+                term.m.toLocaleLowerCase('tr-TR').includes(query)
+            );
+            renderTerms(filtered);
+        });
+
+    </script>
+</body>
+
+</html>
